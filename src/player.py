@@ -1,11 +1,14 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 class Player():
-    def __init__(self,name,room):
+    def __init__(self,name,room,item=[]):
         self.name = name
         self.room = room
+        self.item = item
 
-    
+    def inventory(self):
+        for i in range (len(self.item)):
+            print(f'Inventory: {self.item[i].name}')
     
     def changeRoom(self,direction):
         if direction =='n':
