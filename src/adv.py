@@ -73,7 +73,6 @@ while True:
         action = action_input1[0]
         item = action_input1[1]
         if action =='Take':
-            print(type(currentRoom.item))
             if len(currentRoom.item)==0:
                 print('There is no item in the room')
             else:
@@ -87,13 +86,18 @@ while True:
                     else:
                         print('Invalid Input')
         elif action == 'Drop':
+            found_item = False
             for i in range(len(new_player.item)):
-                print(new_player.item[i])
                 if item == new_player.item[i].name:
+                    found_item = True
                     Item.on_drop(new_player.item[i])
+                    currentRoom.item.append(new_player.item[i])
                     new_player.item.pop(i)
-                else:
-                    print("You don't have things to drop")
+                    
+            if found_item == True:
+                pass
+            else:
+                print("You don't have things to drop")
         else:
             print('Invalid Input')           
     else:
